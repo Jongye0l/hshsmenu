@@ -1,4 +1,4 @@
-package com.Jongyeol.hsmsmenu;
+package com.Jongyeol.hshsmenu;
 
 import android.os.Bundle;
 import android.os.Handler;

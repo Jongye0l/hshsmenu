@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "hsmsmenu"
+rootProject.name = "hshsmenu"
 include ':app'
 include ':lib'

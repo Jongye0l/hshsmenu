@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.Jongyeol.hsmsmenu">
+    package="com.Jongyeol.hshsmenu">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
     <application
@@ -9,12 +9,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Hsmsmenu">
+        android:theme="@style/Theme.Hshsmenu">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-8123106907699339~9824341945"/>
         <activity
-            android:name=".MainActivity"
+            android:name="com.Jongyeol.hshsmenu.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
