@@ -5,6 +5,9 @@ plugins {
 }
 
 android {
+    lintOptions {
+        baseline file("lint-baseline.xml")
+    }
     compileSdk 32
 
     defaultConfig {
@@ -12,7 +15,7 @@ android {
         minSdk 16
         targetSdk 32
         versionCode 1
-        versionName "1.2-pre1"
+        versionName "1.2-pre2"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

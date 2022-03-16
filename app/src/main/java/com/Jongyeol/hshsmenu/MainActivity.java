@@ -1,9 +1,13 @@
 package com.Jongyeol.hshsmenu;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +32,13 @@ public class MainActivity extends AppCompatActivity {
     String nums;
     TextView textView1;
     TextView textView2;
+    TextView version;
+    ImageView Notificationi;
+    TextView Notificationt;
+    Button LateUpdate;
+    Button NowUpdate;
     Date date = new Date();
+    String downloadURL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+        version = (TextView) findViewById(R.id.version);
+        Notificationi = (ImageView) findViewById(R.id.Notificationi);
+        Notificationt = (TextView) findViewById(R.id.Notificationt);
+        NowUpdate = (Button) findViewById(R.id.NowUpdate);
+        LateUpdate = (Button) findViewById(R.id.LateUpdate);
+        Updatenotit();
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -116,6 +132,18 @@ public class MainActivity extends AppCompatActivity {
             textView2.setText(bundle.getString("numbers2"));
         }
     };
+    Handler handler3 = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            Bundle bundle = msg.getData();
+            version.setText(bundle.getString("numbers3"));
+            version.setVisibility(View.VISIBLE);
+            Notificationi.setVisibility(View.VISIBLE);
+            Notificationt.setVisibility(View.VISIBLE);
+            NowUpdate.setVisibility(View.VISIBLE);
+            LateUpdate.setVisibility(View.VISIBLE);
+        }
+    };
     public void NextButtonClick(View view) {
         date.setDate(date.getDate() + 1);
         textView1.setText("식단을 받아오는중...");
@@ -127,5 +155,40 @@ public class MainActivity extends AppCompatActivity {
         textView1.setText("식단을 받아오는중...");
         textView2.setText("식단을 받아오는중...");
         Reload();
+    }
+    public void NowUpdate(View view) {
+        Intent update = new Intent(Intent.ACTION_VIEW, Uri.parse(downloadURL));
+        startActivity(update);
+        Updatenotif();
+    }
+    public void LateUpdate(View view) { Updatenotif(); }
+    public void Updatenotif() {
+        version.setVisibility(View.INVISIBLE);
+        Notificationi.setVisibility(View.INVISIBLE);
+        Notificationt.setVisibility(View.INVISIBLE);
+        NowUpdate.setVisibility(View.INVISIBLE);
+        LateUpdate.setVisibility(View.INVISIBLE);
+    }
+    public void Updatenotit() {
+        final Bundle bundle3 = new Bundle();
+        new Thread() {
+            @Override
+            public void run() {
+                Document doc = null;
+                try {
+                    doc = Jsoup.connect("https://jongye0l.github.io/hshsmenu/version/version.html").get();
+                    if (!doc.text().equals("v1.2-pre2")) {
+                        String text = "현재버전 : v1.2-pre2   최신버전 : " + doc.text();
+                        downloadURL = Jsoup.connect("https://jongye0l.github.io/hshsmenu/version/link.html").get().text();
+                        bundle3.putString("numbers3", text);
+                        Message msg = handler3.obtainMessage();
+                        msg.setData(bundle3);
+                        handler3.sendMessage(msg);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
     }
 }

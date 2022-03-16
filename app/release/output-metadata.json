@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.Jongyeol.hsmsmenu",
+  "applicationId": "com.Jongyeol.hshsmenu",
   "variantName": "release",
   "elements": [
     {
@@ -12,7 +12,7 @@
       "filters": [],
       "attributes": [],
       "versionCode": 1,
-      "versionName": "1.2-pre1",
+      "versionName": "1.2-pre2",
       "outputFile": "app-release.apk"
     }
   ],
