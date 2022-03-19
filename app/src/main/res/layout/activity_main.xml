@@ -271,7 +271,7 @@
         android:layout_height="48dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:onClick="NextButtonClick"
+        android:onClick="LateUpdate"
         android:text="나중에 업데이트"
         android:textSize="11sp"
         android:visibility="invisible"
