@@ -30,6 +30,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     private AdView mAdView;
     String nums;
+    String nums2;
     TextView textView1;
     TextView textView2;
     TextView version;
@@ -112,6 +113,28 @@ public class MainActivity extends AppCompatActivity {
                             textView2.setText("식단이 없습니다.");
                         }
                     }
+                    nums2 = "";
+                    doc = Jsoup.connect("https://school.cbe.go.kr/hshs-h/M01030803/list?ymd=" + todate).get();
+                    for(Element contents : doc.select("ul.tch-lnc-list")) {
+                        for(Element el : contents.select("li.tch-lnc-wrap")){
+                            nums2 += "\n" + el.select("dt").text() + "\n";
+                            Elements contents1 = el.select("dd.tch-lnc");
+                            for(Element el2 : contents1.select("li")){
+                                nums2 += el2.text() + "\n";
+                            }
+                        }
+                        Elements el = contents.select("li.tch-made");
+                        nums2 += "\n" + el.select("dt").text() + "\n" + el.select("dd").text() + "\n";
+                        el = contents.select("li.tch-bigo");
+                        nums2 += "\n" + el.select("dt").text();
+                        Elements el2 = el.select("dd");
+                        for(Element el3 : el2){
+                            nums2 += el3 + "\n";
+                        }
+                        nums2 = nums2.replaceAll("<dd>", "");
+                        nums2 = nums2.replaceAll("<br>", "");
+                        nums2 = nums2.replaceAll("</dd>", "");
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -177,8 +200,8 @@ public class MainActivity extends AppCompatActivity {
                 Document doc = null;
                 try {
                     doc = Jsoup.connect("https://jongye0l.github.io/hshsmenu/version/version.html").get();
-                    if (!doc.text().equals("v1.2-pre2")) {
-                        String text = "현재버전 : v1.2-pre2   최신버전 : " + doc.text();
+                    if (!doc.text().equals("v1.2-pre3")) {
+                        String text = "현재버전 : v1.2-pre3   최신버전 : " + doc.text();
                         downloadURL = Jsoup.connect("https://jongye0l.github.io/hshsmenu/version/link.html").get().text();
                         bundle3.putString("numbers3", text);
                         Message msg = handler3.obtainMessage();
@@ -190,5 +213,42 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }.start();
+    }
+    public void infoButtonClick(View view) {
+        setContentView(R.layout.info);
+        TextView menu = (TextView) findViewById(R.id.menu);
+        TextView today = (TextView) findViewById(R.id.today);
+        menu.setText(nums2);
+        SimpleDateFormat format2 = new SimpleDateFormat("yyyy년 MM월 dd일");
+        String todate2 = format2.format(date);
+        today.setText(todate2 + " 급식");
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+    }
+    public void backButtonClick(View view) {
+        setContentView(R.layout.activity_main);
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        version = (TextView) findViewById(R.id.version);
+        Notificationi = (ImageView) findViewById(R.id.Notificationi);
+        Notificationt = (TextView) findViewById(R.id.Notificationt);
+        NowUpdate = (Button) findViewById(R.id.NowUpdate);
+        LateUpdate = (Button) findViewById(R.id.LateUpdate);
+        Updatenotit();
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        textView1 = (TextView) findViewById(R.id.lunch);
+        textView2 = (TextView) findViewById(R.id.dinner);
+        Reload();
     }
 }
