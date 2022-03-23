@@ -4,10 +4,11 @@
 형석고등학교에 급식 메뉴를 확인합니다.
 ---
 ### 사용방법 How to use
-[이 링크](https://github.com/Jongye0l/hshsmenu/releases) 에서 다운로드후 실행하시면 됩니다.
+[이 링크](https://github.com/Jongye0l/hshsmenu/releases) 에서 다운로드 후 실행하시면 됩니다.
 ---
 ### 기능 Feature
 * 형석고등학교 사이트에서 급식 정보를 받아 뜰수 있게 합니다.
+* 자세히 보기를 눌러 다양한 정보를 확인할 수 있습니다.
 * 가로/세로를 지원합니다.
 * 다크모드를 지원합니다.
 ---
