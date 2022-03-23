@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     Button NowUpdate;
     Date date = new Date();
     String downloadURL;
+    Boolean Lunchisset;
+    Boolean Dinnerisset;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat format2 = new SimpleDateFormat("yyyy년 MM월 dd일");
         String todate2 = format2.format(date);
         today.setText(todate2 + " 급식");
+        Lunchisset = false;
+        Dinnerisset = false;
         final Bundle bundle1 = new Bundle();
         final Bundle bundle2 = new Bundle();
         new Thread(){
@@ -93,27 +97,24 @@ public class MainActivity extends AppCompatActivity {
                             Message msg = handler1.obtainMessage();
                             msg.setData(bundle1);
                             handler1.sendMessage(msg);
+                            Lunchisset = true;
                         }
                         if (contents.select("dt").text().equals("석식")) {
                             bundle2.putString("numbers2", nums);
                             Message msg = handler2.obtainMessage();
                             msg.setData(bundle2);
                             handler2.sendMessage(msg);
-                        }
-                    }
-                    if(doc.select("div.tch-no-data").text().equals("식단이 없습니다.")) {
-                        textView1.setText("식단이 없습니다.");
-                        textView2.setText("식단이 없습니다.");
-                    }
-                    if (textView2.getText().equals("식단을 받아오는중...")) {
-                        if (textView1.getText().equals("식단을 받아오는중...")) {
-                            textView1.setText("식단을 받아올 수 없습니다.");
-                            textView2.setText("식단을 받아올 수 없습니다.");
-                        } else {
-                            textView2.setText("식단이 없습니다.");
+                            Dinnerisset = true;
                         }
                     }
                     nums2 = "";
+                    if(doc.select("div.tch-no-data").text().equals("식단이 없습니다.")) {
+                        textView1.setText("식단이 없습니다.");
+                        textView2.setText("식단이 없습니다.");
+                        nums2 = "식단이 없습니다.";
+                    }
+                    if(Lunchisset.equals(false)) { textView1.setText("식단이 없습니다."); }
+                    if(Dinnerisset.equals(false)) { textView2.setText("식단이 없습니다."); }
                     doc = Jsoup.connect("https://school.cbe.go.kr/hshs-h/M01030803/list?ymd=" + todate).get();
                     for(Element contents : doc.select("ul.tch-lnc-list")) {
                         for(Element el : contents.select("li.tch-lnc-wrap")){
@@ -137,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+                    textView1.setText("인터넷이 연결되어있지 않습니다.");
+                    textView2.setText("인터넷이 연결되어있지 않습니다.");
                 }
             }
         }.start();
