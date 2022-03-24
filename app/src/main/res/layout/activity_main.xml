@@ -182,7 +182,7 @@
         android:onClick="infoButtonClick"
         android:text="자세히 보기"
         android:textColor="@android:color/background_light"
-        android:textSize="11sp"
+        android:textSize="10sp"
         app:backgroundTint="@android:color/secondary_text_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.97"
@@ -241,7 +241,7 @@
         app:layout_constraintVertical_bias="0.47" />
 
     <TextView
-        android:id="@+id/menu"
+        android:id="@+id/none"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center"
