@@ -216,8 +216,8 @@ public class MainActivity extends AppCompatActivity {
                 Document doc = null;
                 try {
                     doc = Jsoup.connect("https://jongye0l.github.io/hshsmenu/version/version.html").get();
-                    if (!doc.text().equals("v1.2-pre5")) {
-                        String text = "현재버전 : v1.2-pre5   최신버전 : " + doc.text();
+                    if (!doc.text().equals("v1.2-pre6")) {
+                        String text = "현재버전 : v1.2-pre6   최신버전 : " + doc.text();
                         downloadURL = Jsoup.connect("https://jongye0l.github.io/hshsmenu/version/link.html").get().text();
                         bundle3.putString("numbers3", text);
                         Message msg = handler3.obtainMessage();
