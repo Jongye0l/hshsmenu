@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
     String downloadURL;
     Boolean Lunchisset;
     Boolean Dinnerisset;
+    Boolean Info;
+    private BackPressCloseHandler backPressCloseHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+        backPressCloseHandler = new BackPressCloseHandler(this);
         version = (TextView) findViewById(R.id.version);
         Notificationi = (ImageView) findViewById(R.id.Notificationi);
         Notificationt = (TextView) findViewById(R.id.Notificationt);
@@ -64,7 +68,16 @@ public class MainActivity extends AppCompatActivity {
         textView2 = (TextView) findViewById(R.id.dinner);
         Reload();
     }
+    @Override
+    public void onBackPressed() {
+        if(Info.equals(true)) {
+            BackMainmenu();
+        } else {
+            backPressCloseHandler.onBackPressed();
+        }
+    }
     public void Reload() {
+        Info = false;
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         String todate = format.format(date);
         TextView today = (TextView) findViewById(R.id.today);
@@ -218,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
         }.start();
     }
     public void infoButtonClick(View view) {
+        Info = true;
         setContentView(R.layout.info);
         TextView menu = (TextView) findViewById(R.id.menu);
         TextView today = (TextView) findViewById(R.id.today);
@@ -235,6 +249,9 @@ public class MainActivity extends AppCompatActivity {
         mAdView.loadAd(adRequest);
     }
     public void backButtonClick(View view) {
+        BackMainmenu();
+    }
+    public void BackMainmenu() {
         setContentView(R.layout.activity_main);
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -253,5 +270,6 @@ public class MainActivity extends AppCompatActivity {
         textView1 = (TextView) findViewById(R.id.lunch);
         textView2 = (TextView) findViewById(R.id.dinner);
         Reload();
+
     }
 }
