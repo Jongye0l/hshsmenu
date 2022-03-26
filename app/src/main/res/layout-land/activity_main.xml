@@ -217,8 +217,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32"
-        tools:visibility="visible" />
+        app:layout_constraintVertical_bias="0.32" />
 
     <TextView
         android:id="@+id/version"
@@ -295,4 +294,3 @@
     </com.google.android.gms.ads.AdView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-    <!-- ads:adUnitId="ca-app-pub-8123106907699339/3966344755"> -->

@@ -148,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
                         nums2 = nums2.replaceAll("<dd>", "");
                         nums2 = nums2.replaceAll("<br>", "");
                         nums2 = nums2.replaceAll("</dd>", "");
+                        nums2 = nums2.replaceAll("&lt;br&gt;", "\n");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -216,8 +217,8 @@ public class MainActivity extends AppCompatActivity {
                 Document doc = null;
                 try {
                     doc = Jsoup.connect("https://jongye0l.github.io/hshsmenu/version/version.html").get();
-                    if (!doc.text().equals("v1.2-pre7")) {
-                        String text = "현재버전 : v1.2-pre7   최신버전 : " + doc.text();
+                    if (!doc.text().equals("v1.2-pre8")) {
+                        String text = "현재버전 : v1.2-pre8   최신버전 : " + doc.text();
                         downloadURL = Jsoup.connect("https://jongye0l.github.io/hshsmenu/version/link.html").get().text();
                         bundle3.putString("numbers3", text);
                         Message msg = handler3.obtainMessage();

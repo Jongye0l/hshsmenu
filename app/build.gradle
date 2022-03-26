@@ -15,7 +15,7 @@ android {
         minSdk 16
         targetSdk 32
         versionCode 1
-        versionName "1.2-pre7"
+        versionName "1.2-pre8"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
