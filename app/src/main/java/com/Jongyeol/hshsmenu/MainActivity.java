@@ -1,6 +1,7 @@
 package com.Jongyeol.hshsmenu;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -55,12 +56,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         backPressCloseHandler = new BackPressCloseHandler(this);
-        version = (TextView) findViewById(R.id.version);
-        Notificationi = (ImageView) findViewById(R.id.Notificationi);
-        Notificationt = (TextView) findViewById(R.id.Notificationt);
-        NowUpdate = (Button) findViewById(R.id.NowUpdate);
-        LateUpdate = (Button) findViewById(R.id.LateUpdate);
-        Updatenotit();
+        //version = (TextView) findViewById(R.id.version);
+        //Notificationi = (ImageView) findViewById(R.id.Notificationi);
+        //Notificationt = (TextView) findViewById(R.id.Notificationt);
+        //NowUpdate = (Button) findViewById(R.id.NowUpdate);
+        //LateUpdate = (Button) findViewById(R.id.LateUpdate);
+        //Updatenotit();
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -83,7 +84,35 @@ public class MainActivity extends AppCompatActivity {
         TextView today = (TextView) findViewById(R.id.today);
         SimpleDateFormat format2 = new SimpleDateFormat("yyyy년 MM월 dd일");
         String todate2 = format2.format(date);
-        today.setText(todate2 + " 급식");
+        SimpleDateFormat format3 = new SimpleDateFormat("E");
+        String todateweek = "";
+        switch (format3.format(date)){
+            case "Mon":
+                todateweek = " 월";
+                break;
+            case "Tue":
+                todateweek = " 화";
+                break;
+            case "Wed":
+                todateweek = " 수";
+                break;
+            case "Thu":
+                todateweek = " 목";
+                break;
+            case "Fri":
+                todateweek = " 금";
+                break;
+            case "Sat":
+                todateweek = " 토";
+                break;
+            case "Sun":
+                todateweek = " 일";
+                break;
+        }
+        if(todateweek.equals("")){
+            todateweek = " " + format3.format(date);
+        }
+        today.setText(todate2 + todateweek + " 급식");
         Lunchisset = false;
         Dinnerisset = false;
         final Bundle bundle1 = new Bundle();
@@ -217,8 +246,8 @@ public class MainActivity extends AppCompatActivity {
                 Document doc = null;
                 try {
                     doc = Jsoup.connect("https://jongye0l.github.io/hshsmenu/version/version.html").get();
-                    if (!doc.text().equals("v1.2-pre8")) {
-                        String text = "현재버전 : v1.2-pre8   최신버전 : " + doc.text();
+                    if (!doc.text().equals("v1.2")) {
+                        String text = "현재버전 : v1.2   최신버전 : " + doc.text();
                         downloadURL = Jsoup.connect("https://jongye0l.github.io/hshsmenu/version/link.html").get().text();
                         bundle3.putString("numbers3", text);
                         Message msg = handler3.obtainMessage();
@@ -259,12 +288,6 @@ public class MainActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
-        version = (TextView) findViewById(R.id.version);
-        Notificationi = (ImageView) findViewById(R.id.Notificationi);
-        Notificationt = (TextView) findViewById(R.id.Notificationt);
-        NowUpdate = (Button) findViewById(R.id.NowUpdate);
-        LateUpdate = (Button) findViewById(R.id.LateUpdate);
-        Updatenotit();
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
