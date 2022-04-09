@@ -7,272 +7,170 @@
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/lunchwidget"
-        android:layout_width="330dp"
-        android:layout_height="260dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.01"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/today"
-        app:layout_constraintVertical_bias="0">
-
-        <TextView
-            android:id="@+id/lunch"
-            android:layout_width="329dp"
-            android:layout_height="195dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="식단을 받아오는중..."
-            android:textSize="18.5sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.65" />
-
-        <ImageView
-            android:id="@+id/lunchi"
-            android:layout_width="330dp"
-            android:layout_height="235dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.43"
-            app:srcCompat="@drawable/menu2" />
-
-        <TextView
-            android:id="@+id/luncht"
-            android:layout_width="77dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="중식"
-            android:textSize="28sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.03" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/dinnerwidget"
-        android:layout_width="330dp"
-        android:layout_height="260dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.99"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/today"
-        app:layout_constraintVertical_bias="0">
-
-        <TextView
-            android:id="@+id/dinner"
-            android:layout_width="329dp"
-            android:layout_height="195dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="식단을 받아오는중..."
-            android:textSize="18.5sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.65" />
-
-        <ImageView
-            android:id="@+id/dinneri"
-            android:layout_width="330dp"
-            android:layout_height="235dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.43"
-            app:srcCompat="@drawable/menu2" />
-
-        <TextView
-            android:id="@+id/dinnert"
-            android:layout_width="77dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="석식"
-            android:textSize="28sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.03" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/today"
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="급식"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/infolayout"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <FrameLayout
+            android:id="@+id/menulayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="216:23"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
+            <com.ssomai.android.scalablelayout.ScalableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:scale_base_height="115"
+                app:scale_base_width="1080">
+                <TextView
+                    android:id="@+id/today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="급식"
+                    app:scale_top="0"
+                    app:scale_left="0"
+                    app:scale_height="70"
+                    app:scale_width="1080"
+                    app:scale_textsize="58" />
+                <Button
+                    android:id="@+id/next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="NextButtonClick"
+                    android:text="내일"
+                    app:backgroundTint="@android:color/holo_blue_dark"
+                    app:scale_top="0"
+                    app:scale_left="975"
+                    app:scale_height="70"
+                    app:scale_width="100"
+                    app:scale_textsize="23" />
+                <Button
+                    android:id="@+id/Previous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick="PreviousButtonClick"
+                    android:text="어제"
+                    app:backgroundTint="@android:color/holo_blue_dark"
+                    app:scale_top="0"
+                    app:scale_left="5"
+                    app:scale_height="70"
+                    app:scale_width="100"
+                    app:scale_textsize="23" />
+            </com.ssomai.android.scalablelayout.ScalableLayout>
+        </FrameLayout>
 
-    <Button
-        android:id="@+id/next"
-        android:layout_width="55dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:onClick="NextButtonClick"
-        android:text="내일"
-        android:textSize="11sp"
-        app:backgroundTint="@android:color/holo_blue_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.97"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
+        <FrameLayout
+            android:id="@+id/lunchlayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="93:65"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/dinnerlayout"
+            app:layout_constraintTop_toBottomOf="@+id/menulayout"
+            app:layout_constraintVertical_bias="0.5">
 
-    <Button
-        android:id="@+id/Previous"
-        android:layout_width="55dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:onClick="PreviousButtonClick"
-        android:text="어제"
-        android:textSize="11sp"
-        app:backgroundTint="@android:color/holo_blue_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.03"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
+            <com.ssomai.android.scalablelayout.ScalableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:scale_base_height="650"
+                app:scale_base_width="930">
+                <TextView
+                    android:id="@+id/lunch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="식단을 받아오는중..."
+                    app:scale_top="85"
+                    app:scale_left="10"
+                    app:scale_height="540"
+                    app:scale_width="900"
+                    app:scale_textsize="50" />
+                <ImageView
+                    android:id="@+id/lunchi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:scale_top="15"
+                    app:scale_left="2"
+                    app:scale_height="620"
+                    app:scale_width="915"
+                    app:srcCompat="@drawable/menu2" />
+                <TextView
+                    android:id="@+id/luncht"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="중식"
+                    app:scale_top="0"
+                    app:scale_left="358"
+                    app:scale_height="100"
+                    app:scale_width="200"
+                    app:scale_textsize="80" />
+            </com.ssomai.android.scalablelayout.ScalableLayout>
+        </FrameLayout>
 
-    <Button
-        android:id="@+id/lunchinfo"
-        android:layout_width="66dp"
-        android:layout_height="49dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:onClick="infoButtonClick"
-        android:text="자세히 보기"
-        android:textColor="@android:color/background_light"
-        android:textSize="11sp"
-        app:backgroundTint="@android:color/secondary_text_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1" />
-
-    <!--<ImageView
-        android:id="@+id/Notification"
-        android:layout_width="390dp"
-        android:layout_height="230dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/notification" />
-
-    <TextView
-        android:id="@+id/Notification"
-        android:layout_width="340dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="새로운 업데이트가 생겼습니다!\n업데이트를 진행해주세요."
-        android:textColor="#F00000"
-        android:textSize="24sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32" />
-
-    <TextView
-        android:id="@+id/version"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:visibility="invisible"
-        android:text="현재버전 : v0.2   최신버전 : v0.2"
-        android:textColor="#F00000"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.47" />
-
-    <Button
-        android:id="@+id/NowUpdate"
-        android:layout_width="130dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:onClick="NowUpdate"
-        android:visibility="invisible"
-        android:text="지금 업데이트하기"
-        android:textSize="11sp"
-        android:textColor="#0000FF"
-        app:backgroundTint="#3fe786"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.68"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
-
-    <Button
-        android:id="@+id/LateUpdate"
-        android:layout_width="130dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:onClick="LateUpdate"
-        android:visibility="invisible"
-        android:text="나중에 업데이트"
-        android:textSize="11sp"
-        android:textColor="#F00000"
-        app:backgroundTint="#3fe786"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.32"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />-->
+        <FrameLayout
+            android:id="@+id/dinnerlayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="93:65"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menulayout"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@+id/lunchlayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.5">
+            <com.ssomai.android.scalablelayout.ScalableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:scale_base_height="650"
+                app:scale_base_width="930" >
+                <TextView
+                    android:id="@+id/dinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="식단을 받아오는중..."
+                    app:scale_top="85"
+                    app:scale_left="10"
+                    app:scale_height="540"
+                    app:scale_width="900"
+                    app:scale_textsize="50" />
+                <ImageView
+                    android:id="@+id/dinneri"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:scale_top="15"
+                    app:scale_left="2"
+                    app:scale_height="620"
+                    app:scale_width="915"
+                    app:srcCompat="@drawable/menu2" />
+                <TextView
+                    android:id="@+id/dinnert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="석식"
+                    app:scale_top="0"
+                    app:scale_left="358"
+                    app:scale_height="100"
+                    app:scale_width="200"
+                    app:scale_textsize="80" />
+            </com.ssomai.android.scalablelayout.ScalableLayout>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -290,7 +188,105 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        ads:adUnitId="@string/banner_ad_unit_id">
     </com.google.android.gms.ads.AdView>
+
+    <FrameLayout
+        android:id="@+id/infolayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="15:1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0">
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:scale_base_height="10"
+            app:scale_base_width="150">
+            <Button
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:onClick="infoButtonClick"
+                android:text="자세히\n보기"
+                android:textColor="@android:color/background_light"
+                app:backgroundTint="@android:color/secondary_text_light"
+                app:scale_top="0"
+                app:scale_left="60"
+                app:scale_height="10"
+                app:scale_width="15"
+                app:scale_textsize="2" />
+
+            <Button
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:onClick="backButtonClick"
+                android:text="돌아가기"
+                android:textColor="@android:color/background_light"
+                android:visibility="invisible"
+                app:backgroundTint="@android:color/secondary_text_light"
+                app:scale_top="0"
+                app:scale_left="-60"
+                app:scale_height="10"
+                app:scale_width="15"
+                app:scale_textsize="2" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+    </FrameLayout>
+    <ScrollView
+        android:id="@+id/information"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/infolayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/today2"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="급식"
+                android:textSize="40sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.02" />
+
+            <TextView
+                android:id="@+id/menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="식단을 받아오는중..."
+                android:textSize="30sp"
+                app:layout_constraintTop_toBottomOf="@id/today" />
+
+            <TextView
+                android:id="@+id/madebyJongyeol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:text="만든이 : 1-2 박종열"
+                android:textSize="11sp"
+                app:layout_constraintTop_toBottomOf="@id/today" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

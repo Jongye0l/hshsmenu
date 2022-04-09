@@ -1,7 +1,6 @@
 package com.Jongyeol.hshsmenu;
 
 import android.content.Intent;
-import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,11 +8,14 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
@@ -37,8 +39,12 @@ public class MainActivity extends AppCompatActivity {
     TextView version;
     ImageView Notificationi;
     TextView Notificationt;
+    ConstraintLayout main;
+    ScrollView information;
     Button LateUpdate;
     Button NowUpdate;
+    Button info;
+    Button back;
     Date date = new Date();
     String downloadURL;
     Boolean Lunchisset;
@@ -50,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(getString(R.string.banner_ad_unit_id));
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -67,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
         mAdView.loadAd(adRequest);
         textView1 = (TextView) findViewById(R.id.lunch);
         textView2 = (TextView) findViewById(R.id.dinner);
+        main = (ConstraintLayout) findViewById(R.id.main);
+        information = (ScrollView) findViewById(R.id.information);
+        info = (Button) findViewById(R.id.info);
+        back = (Button) findViewById(R.id.back);
         Reload();
     }
     @Override
@@ -82,37 +95,39 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         String todate = format.format(date);
         TextView today = (TextView) findViewById(R.id.today);
+        TextView today2 = (TextView) findViewById(R.id.today2);
         SimpleDateFormat format2 = new SimpleDateFormat("yyyy년 MM월 dd일");
         String todate2 = format2.format(date);
         SimpleDateFormat format3 = new SimpleDateFormat("E");
         String todateweek = "";
         switch (format3.format(date)){
             case "Mon":
-                todateweek = " 월";
+                todateweek = " (월)";
                 break;
             case "Tue":
-                todateweek = " 화";
+                todateweek = " (화)";
                 break;
             case "Wed":
-                todateweek = " 수";
+                todateweek = " (수)";
                 break;
             case "Thu":
-                todateweek = " 목";
+                todateweek = " (목)";
                 break;
             case "Fri":
-                todateweek = " 금";
+                todateweek = " (금)";
                 break;
             case "Sat":
-                todateweek = " 토";
+                todateweek = " (토)";
                 break;
             case "Sun":
-                todateweek = " 일";
+                todateweek = " (일)";
                 break;
         }
         if(todateweek.equals("")){
-            todateweek = " " + format3.format(date);
+            todateweek = " (" + format3.format(date) + ")";
         }
         today.setText(todate2 + todateweek + " 급식");
+        today2.setText(todate2 + todateweek + " 급식");
         Lunchisset = false;
         Dinnerisset = false;
         final Bundle bundle1 = new Bundle();
@@ -262,38 +277,24 @@ public class MainActivity extends AppCompatActivity {
     }
     public void infoButtonClick(View view) {
         Info = true;
-        setContentView(R.layout.info);
+        main.setVisibility(View.INVISIBLE);
+        information.setVisibility(View.VISIBLE);
+        info.setVisibility(View.INVISIBLE);
+        back.setVisibility(View.VISIBLE);
         TextView menu = (TextView) findViewById(R.id.menu);
-        TextView today = (TextView) findViewById(R.id.today);
         menu.setText(nums2);
-        SimpleDateFormat format2 = new SimpleDateFormat("yyyy년 MM월 dd일");
-        String todate2 = format2.format(date);
-        today.setText(todate2 + " 급식");
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
     }
     public void backButtonClick(View view) {
         BackMainmenu();
     }
     public void BackMainmenu() {
-        setContentView(R.layout.activity_main);
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        main.setVisibility(View.VISIBLE);
+        information.setVisibility(View.INVISIBLE);
+        info.setVisibility(View.VISIBLE);
+        back.setVisibility(View.INVISIBLE);
         textView1 = (TextView) findViewById(R.id.lunch);
         textView2 = (TextView) findViewById(R.id.dinner);
-        Reload();
+        //Reload();
 
     }
 }
