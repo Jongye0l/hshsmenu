@@ -56,14 +56,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AdView adView = new AdView(this);
-        adView.setAdSize(AdSize.BANNER);
-        adView.setAdUnitId(getString(R.string.banner_ad_unit_id));
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(getString(R.string.banner_ad_unit_id));
+        Info = false;
         backPressCloseHandler = new BackPressCloseHandler(this);
         //version = (TextView) findViewById(R.id.version);
         //Notificationi = (ImageView) findViewById(R.id.Notificationi);
@@ -91,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void Reload() {
-        Info = false;
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         String todate = format.format(date);
         TextView today = (TextView) findViewById(R.id.today);
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             todateweek = " (" + format3.format(date) + ")";
         }
         today.setText(todate2 + todateweek + " 급식");
-        today2.setText(todate2 + todateweek + " 급식");
+        today2.setText(todate2 + todateweek);
         Lunchisset = false;
         Dinnerisset = false;
         final Bundle bundle1 = new Bundle();
@@ -294,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
         back.setVisibility(View.INVISIBLE);
         textView1 = (TextView) findViewById(R.id.lunch);
         textView2 = (TextView) findViewById(R.id.dinner);
-        //Reload();
+        Info = false;
 
     }
 }
