@@ -14,8 +14,8 @@ android {
         applicationId "com.Jongyeol.hshsmenu"
         minSdk 16
         targetSdk 32
-        versionCode 7
-        versionName "1.2.4"
+        versionCode 9
+        versionName "1.2.6"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

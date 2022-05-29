@@ -144,11 +144,14 @@ public class MainActivity extends AppCompatActivity {
                         for(Element el : contents1.select("li")){
                             nums += el.text() + "\n";
                         }
+                        String star = "d";
+                        String[] test = nums.split(star);
                         nums = nums.replace("*", "");
                         nums = nums.replace(".", "");
                         for(int i=0; i<10; i++) {
                             nums = nums.replace("" + i, "");
                         }
+                        nums = nums.replace("()", "");
                         if(contents.select("dt").text().equals("중식")) {
                             bundle1.putString("numbers", nums);
                             Message msg = handler1.obtainMessage();
@@ -175,7 +178,8 @@ public class MainActivity extends AppCompatActivity {
                     doc = Jsoup.connect("https://school.cbe.go.kr/hshs-h/M01030803/list?ymd=" + todate).get();
                     for(Element contents : doc.select("ul.tch-lnc-list")) {
                         for(Element el : contents.select("li.tch-lnc-wrap")){
-                            nums2 += "\n" + el.select("dt").text() + "\n";
+                            if(!nums2.equals("")) { nums2 += "\n";}
+                            nums2 += el.select("dt").text() + "\n";
                             Elements contents1 = el.select("dd.tch-lnc");
                             for(Element el2 : contents1.select("li")){
                                 nums2 += el2.text() + "\n";
