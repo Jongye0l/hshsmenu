@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "hshsmenu"
 include ':app'
 include ':lib'
+include ':Server'

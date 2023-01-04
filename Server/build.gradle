@@ -1,0 +1,13 @@
+plugins {
+    id 'java-library'
+}
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation files('D:/library/MultiplyServer.jar')
+    compileOnly files('D:/library/jsoup-1.14.3.jar')
+    implementation 'com.google.code.gson:gson:2.10'
+}

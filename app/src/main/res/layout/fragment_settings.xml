@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".LeftNavigation.FragmentSettings">
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:scale_base_height="240"
+            app:scale_base_width="1080">
+            <TextView
+                android:id="@+id/grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="학년"
+                app:scale_height="120"
+                app:scale_left="10"
+                app:scale_textsize="70"
+                app:scale_top="0"
+                app:scale_width="150" />
+
+            <EditText
+                android:id="@+id/grade_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="학년"
+                android:inputType="number"
+                app:scale_height="135"
+                app:scale_left="160"
+                app:scale_textsize="70"
+                app:scale_top="0"
+                app:scale_width="150" />
+            <TextView
+                android:id="@+id/classroom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="반"
+                app:scale_height="120"
+                app:scale_left="10"
+                app:scale_textsize="70"
+                app:scale_top="120"
+                app:scale_width="150" />
+
+            <EditText
+                android:id="@+id/classroom_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="반"
+                android:inputType="number"
+                app:scale_height="135"
+                app:scale_left="160"
+                app:scale_textsize="70"
+                app:scale_top="120"
+                app:scale_width="150" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+    </FrameLayout>
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintVertical_bias="1"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
+</androidx.constraintlayout.widget.ConstraintLayout>

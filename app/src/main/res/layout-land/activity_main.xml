@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -187,21 +188,21 @@
             android:layout_height="wrap_content"
             app:scale_base_height="10"
             app:scale_base_width="150">
+
             <Button
                 android:id="@+id/info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:onClick="infoButtonClick"
                 android:text="자세히\n보기"
                 android:textColor="@android:color/background_light"
                 app:backgroundTint="@android:color/secondary_text_light"
-                app:scale_top="0"
-                app:scale_left="60"
                 app:scale_height="10"
-                app:scale_width="15"
-                app:scale_textsize="2" />
+                app:scale_left="60"
+                app:scale_textsize="2"
+                app:scale_top="0"
+                app:scale_width="15" />
 
             <Button
                 android:id="@+id/back"

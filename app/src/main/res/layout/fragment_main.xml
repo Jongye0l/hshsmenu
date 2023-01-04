@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".BottomNavigation.FragmentMain">
+
+    <FrameLayout
+        android:id="@+id/lunchlayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1080:635"
+        app:layout_constraintBottom_toTopOf="@id/dinnerlayout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:scale_base_height="635"
+            app:scale_base_width="1080">
+            <TextView
+                android:id="@+id/lunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="식단을 받아오는중..."
+                app:scale_top="87"
+                app:scale_left="82"
+                app:scale_height="538"
+                app:scale_width="900"
+                app:scale_textsize="50" />
+            <ImageView
+                android:id="@+id/lunchi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:scale_top="20"
+                app:scale_left="74"
+                app:scale_height="620"
+                app:scale_width="915"
+                app:srcCompat="@drawable/menu2" />
+            <TextView
+                android:id="@+id/luncht"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="중식"
+                app:scale_top="0"
+                app:scale_left="430"
+                app:scale_height="100"
+                app:scale_width="200"
+                app:scale_textsize="80" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/dinnerlayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1080:635"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lunchlayout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0">
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:scale_base_height="635"
+            app:scale_base_width="1080" >
+            <TextView
+                android:id="@+id/dinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="식단을 받아오는중..."
+                app:scale_top="87"
+                app:scale_left="82"
+                app:scale_height="538"
+                app:scale_width="900"
+                app:scale_textsize="50" />
+            <ImageView
+                android:id="@+id/dinneri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:scale_top="20"
+                app:scale_left="74"
+                app:scale_height="620"
+                app:scale_width="915"
+                app:srcCompat="@drawable/menu2" />
+            <TextView
+                android:id="@+id/dinnert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="석식"
+                app:scale_top="0"
+                app:scale_left="430"
+                app:scale_height="100"
+                app:scale_width="200"
+                app:scale_textsize="80" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

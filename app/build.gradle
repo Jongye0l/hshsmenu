@@ -1,21 +1,22 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
 }
 
+
 android {
+    compileSdk 33
+
     lintOptions {
         baseline file("lint-baseline.xml")
     }
-    compileSdk 32
 
     defaultConfig {
         applicationId "com.Jongyeol.hshsmenu"
-        minSdk 16
-        targetSdk 32
-        versionCode 9
-        versionName "1.2.6"
+        minSdk 17
+        targetSdk 33
+        versionCode 11
+        versionName "1.3.1"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -31,8 +32,8 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
+    buildFeatures {
+        viewBinding true
     }
 }
 dependencies {
@@ -40,11 +41,16 @@ dependencies {
     implementation 'com.ssomai:android.scalablelayout:2.1.6'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation files('libs\\jsoup-1.14.3.jar')
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation files('libs/jsoup-1.14.3.jar')
     implementation 'com.google.firebase:firebase-analytics:18.0.3'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'androidx.navigation:navigation-ui:2.5.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
